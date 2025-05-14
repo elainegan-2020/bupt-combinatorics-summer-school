@@ -25,14 +25,7 @@
       text-align: center;
       position: relative;
     }
-    .lang-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      color: white;
-    }
+    
     nav {
       background: #ffffff;
       border-bottom: 1px solid #ddd;
@@ -110,21 +103,30 @@
     .schedule-table tr:nth-child(odd) td {
       background: #ffffff;
     }
-    </style>
+    
+.lang-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  user-select: none;
+}
+</style>
 <meta content="2025暑期学校官网，包含课程介绍、讲者信息、日程安排、报名方式等。" name="description"/>
 <meta content="暑期学校, 图论, 组合数学, Summer School, Graph Theory, Combinatorics, 2025" name="keywords"/>
 </head>
 <body style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/06/Strongly_regular_graph4c.png'); background-size: cover; background-attachment: fixed; font-family: 'Noto Sans SC', sans-serif;">
 <header>
-<h1 id="title">暑期学校 Summer School</h1>
-<div class="lang-toggle" id="lang">🌐 English</div>
+<div class="lang-toggle" id="lang">🌐 English</div><h1 id="title">暑期学校 Summer School</h1>
 </header> <section id="intro">
 <h2 id="welcome-title">欢迎</h2>
 <p id="welcome-text">2025 年暑期学校将于 8 月 25 日至 30 日举行，涵盖图论、组合数学等多个方向。</p>
 </section>
 <section id="courses">
 <h2 id="course-title">主讲课程</h2>
-<ul id="course-list"></ul>
+<ul id="course-list"><li>课程 A</li><li>课程 B</li></ul>
 </section><section id="speakers">
 <h2 id="speaker-title">主讲人介绍</h2>
 <div id="speaker-list">
@@ -152,7 +154,6 @@
 </tbody>
 </table>
 <p style="font-size:14px; color:#666; text-align:right; margin-top:10px;">📅 日程最后更新时间：2025年05月14日</p></section>
-
 <section id="resources" style="background:#fdfdfd; border-top: 4px solid #ccc;">
 <h2 id="resource-title">学习与资料</h2>
 <ul style="list-style:none; padding-left:0; line-height:2em;">
@@ -179,104 +180,99 @@
 <p><strong>联系人：</strong>example@example.edu</p>
 </section>
 <script>
-    let language = "zh";
-    function toggleLanguage() {
-      const zh = {
-        title: "暑期学校 Summer School",
-        welcome: ["欢迎", "2025 年暑期学校将于 8 月 25 日至 30 日举行，涵盖图论、组合数学等多个方向。"],
-        courseTitle: "主讲课程",
-        courseList: [
-          "课程 A：图论基础与研究进展（主讲人：Prof. Demo A）",
-          "课程 B：组合数学中的结构方法（主讲人：Prof. Demo B）"
-        ],
-        scheduleTitle: "日程安排（2025 年 8 月 25 日至 30 日）",
-        th: ["日期", "星期", "安排"],
-        scheduleRows: [
-  ["2025-08-25", "Monday", "TBA"],
-  ["2025-08-26", "Tuesday", "TBA"],
-  ["2025-08-27", "Wednesday", "TBA"],
-  ["2025-08-28", "Thursday", "TBA"],
-  ["2025-08-29", "Friday", "TBA"],
-  ["2025-08-30", "Saturday", "TBA"]
-],
-        register: ["报名方式", "请通过以下链接进行报名：", "点击报名"],
-        footer: [
-          "主办单位：Example University",
-          "协办单位：Example Research Center",
-          "联系人：example@example.edu"
-        ],
-        langToggle: "English"
-      };
-
-      const en = {
-        title: "Summer School",
-        welcome: ["Welcome", "The 2025 Summer School will be held from August 25 to 30, covering graph theory, combinatorics, and more."],
-        courseTitle: "Courses",
-        courseList: [
-          "课程 A：图论基础与研究进展（主讲人：Prof. Demo A）",
-          "课程 B：组合数学中的结构方法（主讲人：Prof. Demo B）"
-        ],
-        scheduleTitle: "Schedule (Aug 25–30, 2025)",
-        th: ["Date", "Day", "Event"],
-        scheduleRows: [
-  ["2025-08-25", "Monday", "TBA"],
-  ["2025-08-26", "Tuesday", "TBA"],
-  ["2025-08-27", "Wednesday", "TBA"],
-  ["2025-08-28", "Thursday", "TBA"],
-  ["2025-08-29", "Friday", "TBA"],
-  ["2025-08-30", "Saturday", "TBA"]
-],
-        register: ["Registration", "Please register using the link below:", "Register Now"],
-        footer: [
-          "Organizer: Example University",
-          "Co-organizer: Example Research Center",
-          "Contact: example@example.edu"
-        ],
-        langToggle: "中文"
-      };
-
-      const L = language === "zh" ? en : zh;
-      language = language === "zh" ? "en" : "zh";
-
-      document.getElementById("title").textContent = L.title;
-      document.getElementById("lang").textContent = L.langToggle;
-      document.getElementById("welcome-title").textContent = L.welcome[0];
-      document.getElementById("welcome-text").textContent = L.welcome[1];
-      document.getElementById("course-title").textContent = L.courseTitle;
-
-      const cl = document.getElementById("course-list");
-      cl.innerHTML = "";
-      L.courseList.forEach(txt => {
-        const li = document.createElement("li");
-        li.innerHTML = txt;
-        cl.appendChild(li);
-      });
-
-      document.getElementById("schedule-title").textContent = L.scheduleTitle;
-      document.getElementById("th-date").textContent = L.th[0];
-      document.getElementById("th-weekday").textContent = L.th[1];
-      document.getElementById("th-content").textContent = L.th[2];
-      const tbody = document.getElementById("schedule-body");
-      tbody.innerHTML = "";
-      L.scheduleRows.forEach(row => {
-        const tr = document.createElement("tr");
-        row.forEach(cell => {
-          const td = document.createElement("td");
-          td.innerHTML = cell;
-          tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-      });
-
-      document.getElementById("register-title").textContent = L.register[0];
-      document.getElementById("register-text").textContent = L.register[1];
-      document.getElementById("register-button").textContent = L.register[2];
-
-      const footer = document.getElementById("footer");
-      footer.innerHTML = "<p><strong>" + L.footer[0] + "</strong></p><p><strong>" + L.footer[1] + "</strong></p><p><strong>" + L.footer[2] + "</strong></p>";
+let language = "zh";
+document.getElementById("lang").addEventListener("click", toggleLanguage);
+function toggleLanguage() {
+  language = (language === "zh") ? "en" : "zh";
+  const text = {
+    zh: {
+      title: "暑期学校 Summer School",
+      courseTitle: "主讲课程",
+      courseList: ["课程 A", "课程 B"],
+      scheduleTitle: "日程安排（2025 年 8 月 25 日至 30 日）",
+      th: ["日期", "星期", "安排"],
+      register: ["报名方式", "请通过以下链接进行报名：", "点击报名"],
+      footer: ["主办单位：", "协办单位：", "联系人："],
+      lang: "🌐 English"
+    },
+    en: {
+      title: "Summer School",
+      courseTitle: "Courses",
+      courseList: ["Course A", "Course B"],
+      scheduleTitle: "Schedule (Aug 25–30, 2025)",
+      th: ["Date", "Day", "Event"],
+      register: ["Registration", "Please register using the link below:", "Register Now"],
+      footer: ["Organizer:", "Co-organizer:", "Contact:"],
+      lang: "🌐 中文"
     }
+  };
+  const L = text[language];
+  document.getElementById("title").textContent = L.title;
+  document.getElementById("lang").textContent = L.lang;
+  document.getElementById("course-title").textContent = L.courseTitle;
+  const cl = document.getElementById("course-list");
+  cl.innerHTML = "";
+  L.courseList.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    cl.appendChild(li);
+  });
+  document.getElementById("schedule-title").textContent = L.scheduleTitle;
+  document.getElementById("th-date").textContent = L.th[0];
+  document.getElementById("th-weekday").textContent = L.th[1];
+  document.getElementById("th-content").textContent = L.th[2];
+  document.getElementById("register-title").textContent = L.register[0];
+  document.getElementById("register-text").textContent = L.register[1];
+  document.getElementById("register-button").textContent = L.register[2];
+  document.getElementById("organizer").textContent = L.footer[0];
+  document.getElementById("coorganizer").textContent = L.footer[1];
+  document.getElementById("contact").textContent = L.footer[2];
+}
 
-    document.getElementById("lang").addEventListener("click", toggleLanguage);
-  </script>
+
+window.addEventListener("DOMContentLoaded", () => {
+  const userLang = navigator.language || navigator.userLanguage;
+  if (userLang.startsWith("en")) {
+    language = "zh";  // force toggle to switch to English
+    toggleLanguage();
+  }
+});
+</script>
+<div style="text-align:center; font-size:14px; color:#666; margin-top:30px;">
+  当前页面访问次数：<span id="visit-count">加载中...</span>
+</div>
+<script>
+const API_URL = "https://sheetdb.io/api/v1/5pvilw9t15zea";
+const today = new Date().toISOString().slice(0, 10);
+
+async function updateVisitStats() {
+  const existing = await fetch(`${API_URL}/search?Date=${today}`).then(res => res.json());
+
+  if (existing.length > 0) {
+    const row = existing[0];
+    const count = parseInt(row.Count || 0) + 1;
+    await fetch(`${API_URL}/id/${row.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: { Count: count } })
+    });
+  } else {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: { Date: today, Count: 1 } })
+    });
+  }
+
+  const all = await fetch(API_URL).then(res => res.json());
+  const todayRow = all.find(r => r.Date === today);
+  const todayCount = todayRow ? todayRow.Count : 1;
+  const total = all.reduce((sum, r) => sum + parseInt(r.Count || 0), 0);
+
+  document.getElementById("visit-count").textContent = `今日：${todayCount} / 累计：${total}`;
+}
+
+updateVisitStats();
+</script>
 </body>
 </html>
