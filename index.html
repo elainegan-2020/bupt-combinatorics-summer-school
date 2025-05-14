@@ -1,55 +1,282 @@
+
 <!DOCTYPE html>
+
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <title>暑期学校</title>
-    <style>
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            margin: 40px;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .schedule {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-        .register-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .register-button:hover {
-            background-color: #2980b9;
-        }
+<head><link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<title>暑期学校 Summer School</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Petersen_graph.svg/800px-Petersen_graph.svg.png') no-repeat center top; background-size: contain;
+      color: #333;
+    }
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      color: white;
+    }
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 1000px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    h2 {
+      border-bottom: 2px solid #0066cc33;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    .register-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #0066cc;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .register-button:hover {
+      background-color: #005bb5;
+    }
+    table.schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .schedule-table th, .schedule-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    .schedule-table th {
+      background: #f0f0f0;
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .register-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  
+    .schedule-table th {
+      background: #e0e7ef;
+      color: #333;
+    }
+    .schedule-table tr:nth-child(even) td {
+      background: #f9fcff;
+    }
+    .schedule-table tr:nth-child(odd) td {
+      background: #ffffff;
+    }
     </style>
+<meta content="2025暑期学校官网，包含课程介绍、讲者信息、日程安排、报名方式等。" name="description"/>
+<meta content="暑期学校, 图论, 组合数学, Summer School, Graph Theory, Combinatorics, 2025" name="keywords"/>
 </head>
-<body>
+<body style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/06/Strongly_regular_graph4c.png'); background-size: cover; background-attachment: fixed; font-family: 'Noto Sans SC', sans-serif;">
+<header>
+<h1 id="title">暑期学校 Summer School</h1>
+<div class="lang-toggle" id="lang">🌐 English</div>
+</header> <section id="intro">
+<h2 id="welcome-title">欢迎</h2>
+<p id="welcome-text">2025 年暑期学校将于 8 月 25 日至 30 日举行，涵盖图论、组合数学等多个方向。</p>
+</section>
+<section id="courses">
+<h2 id="course-title">主讲课程</h2>
+<ul id="course-list"></ul>
+</section><section id="speakers">
+<h2 id="speaker-title">主讲人介绍</h2>
+<div id="speaker-list">
+<p><strong>Prof. Demo A：</strong> Example University 教授，研究方向为极值图论与图参数。</p>
+<p><strong>Prof. Demo B：</strong> Example Institute 教授，专注于组合结构与概率方法。</p>
+</div>
+</section>
+<section id="schedule">
+<h2 id="schedule-title">日程安排（2025 年 8 月 25 日至 30 日）</h2>
+<table class="schedule-table">
+<thead>
+<tr>
+<th id="th-date">日期</th>
+<th id="th-weekday">星期</th>
+<th id="th-content">安排</th>
+</tr>
+</thead>
+<tbody id="schedule-body">
+<tr><td>2025-08-25</td><td>星期一</td><td>暂定</td></tr>
+<tr><td>2025-08-26</td><td>星期二</td><td>暂定</td></tr>
+<tr><td>2025-08-27</td><td>星期三</td><td>暂定</td></tr>
+<tr><td>2025-08-28</td><td>星期四</td><td>暂定</td></tr>
+<tr><td>2025-08-29</td><td>星期五</td><td>暂定</td></tr>
+<tr><td>2025-08-30</td><td>星期六</td><td>暂定</td></tr>
+</tbody>
+</table>
+<p style="font-size:14px; color:#666; text-align:right; margin-top:10px;">📅 日程最后更新时间：2025年05月14日</p></section>
 
-    <h1>暑期学校</h1>
+<section id="resources" style="background:#fdfdfd; border-top: 4px solid #ccc;">
+<h2 id="resource-title">学习与资料</h2>
+<ul style="list-style:none; padding-left:0; line-height:2em;">
+<li style="padding:4px 0;"><a href="#" style="text-decoration:none; color:#0066cc;" target="_blank">📄 PDF 会议手册（即将上线）</a></li>
+<li style="padding:4px 0;"><a href="#" style="text-decoration:none; color:#0066cc;" target="_blank">📘 PDF 课堂资料（即将上线）</a></li>
+<li style="padding:4px 0;"><a href="#" style="text-decoration:none; color:#0066cc;" target="_blank">🎬 课堂视频学习回顾（即将上线）</a></li>
+</ul>
+</section>
+<section id="faq" style="background:#f7faff; border-left: 6px solid #007acc; padding: 20px;">
+<h2>常见问题 FAQ</h2>
+<ul style="line-height:1.8em; padding-left:20px;">
+<li><strong>如何报名？</strong> 请点击页面下方的报名链接，填写表单提交。</li>
+<li><strong>是否提供住宿？</strong> 主办方可提供部分住宿名额，详见报名表说明。</li>
+<li><strong>是否提供听课证明？</strong> 参与全程可申请听课证明，活动结束后统一发放。</li>
+</ul>
+</section><section id="register">
+<h2 id="register-title">报名方式</h2>
+<p id="register-text">请通过以下链接进行报名：</p>
+<a class="register-button" href="https://elainegan-2020.github.io/summer-school-form/" id="register-button">点击报名</a>
+</section>
+<section id="footer" style="text-align:center; font-size:14px; margin-top:40px; padding:20px; background:#f0f0f0;">
+<p><strong>主办单位：</strong>Example University</p>
+<p><strong>协办单位：</strong>Example Research Center</p>
+<p><strong>联系人：</strong>example@example.edu</p>
+</section>
+<script>
+    let language = "zh";
+    function toggleLanguage() {
+      const zh = {
+        title: "暑期学校 Summer School",
+        welcome: ["欢迎", "2025 年暑期学校将于 8 月 25 日至 30 日举行，涵盖图论、组合数学等多个方向。"],
+        courseTitle: "主讲课程",
+        courseList: [
+          "课程 A：图论基础与研究进展（主讲人：Prof. Demo A）",
+          "课程 B：组合数学中的结构方法（主讲人：Prof. Demo B）"
+        ],
+        scheduleTitle: "日程安排（2025 年 8 月 25 日至 30 日）",
+        th: ["日期", "星期", "安排"],
+        scheduleRows: [
+  ["2025-08-25", "Monday", "TBA"],
+  ["2025-08-26", "Tuesday", "TBA"],
+  ["2025-08-27", "Wednesday", "TBA"],
+  ["2025-08-28", "Thursday", "TBA"],
+  ["2025-08-29", "Friday", "TBA"],
+  ["2025-08-30", "Saturday", "TBA"]
+],
+        register: ["报名方式", "请通过以下链接进行报名：", "点击报名"],
+        footer: [
+          "主办单位：Example University",
+          "协办单位：Example Research Center",
+          "联系人：example@example.edu"
+        ],
+        langToggle: "English"
+      };
 
-    <p>欢迎参加由图论与组合数学研究小组主办的暑期学校。本次暑期学校面向研究生，内容涵盖图论前沿主题，邀请多位国内外专家授课。</p>
+      const en = {
+        title: "Summer School",
+        welcome: ["Welcome", "The 2025 Summer School will be held from August 25 to 30, covering graph theory, combinatorics, and more."],
+        courseTitle: "Courses",
+        courseList: [
+          "课程 A：图论基础与研究进展（主讲人：Prof. Demo A）",
+          "课程 B：组合数学中的结构方法（主讲人：Prof. Demo B）"
+        ],
+        scheduleTitle: "Schedule (Aug 25–30, 2025)",
+        th: ["Date", "Day", "Event"],
+        scheduleRows: [
+  ["2025-08-25", "Monday", "TBA"],
+  ["2025-08-26", "Tuesday", "TBA"],
+  ["2025-08-27", "Wednesday", "TBA"],
+  ["2025-08-28", "Thursday", "TBA"],
+  ["2025-08-29", "Friday", "TBA"],
+  ["2025-08-30", "Saturday", "TBA"]
+],
+        register: ["Registration", "Please register using the link below:", "Register Now"],
+        footer: [
+          "Organizer: Example University",
+          "Co-organizer: Example Research Center",
+          "Contact: example@example.edu"
+        ],
+        langToggle: "中文"
+      };
 
-    <div class="schedule">
-        <h2>具体日程</h2>
-        <ul>
-            <li>第一天（8月18日）：注册报到 + 开幕致辞 + 专题讲座一</li>
-            <li>第二天（8月19日）：专题讲座二 + 小组研讨</li>
-            <li>第三天（8月20日）：专题讲座三 + 闭幕交流</li>
-        </ul>
-    </div>
+      const L = language === "zh" ? en : zh;
+      language = language === "zh" ? "en" : "zh";
 
-    <a href="https://elainegan-2020.github.io/summer-school-form/" class="register-button" target="_blank">点击报名</a>
+      document.getElementById("title").textContent = L.title;
+      document.getElementById("lang").textContent = L.langToggle;
+      document.getElementById("welcome-title").textContent = L.welcome[0];
+      document.getElementById("welcome-text").textContent = L.welcome[1];
+      document.getElementById("course-title").textContent = L.courseTitle;
 
+      const cl = document.getElementById("course-list");
+      cl.innerHTML = "";
+      L.courseList.forEach(txt => {
+        const li = document.createElement("li");
+        li.innerHTML = txt;
+        cl.appendChild(li);
+      });
+
+      document.getElementById("schedule-title").textContent = L.scheduleTitle;
+      document.getElementById("th-date").textContent = L.th[0];
+      document.getElementById("th-weekday").textContent = L.th[1];
+      document.getElementById("th-content").textContent = L.th[2];
+      const tbody = document.getElementById("schedule-body");
+      tbody.innerHTML = "";
+      L.scheduleRows.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.innerHTML = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("register-title").textContent = L.register[0];
+      document.getElementById("register-text").textContent = L.register[1];
+      document.getElementById("register-button").textContent = L.register[2];
+
+      const footer = document.getElementById("footer");
+      footer.innerHTML = "<p><strong>" + L.footer[0] + "</strong></p><p><strong>" + L.footer[1] + "</strong></p><p><strong>" + L.footer[2] + "</strong></p>";
+    }
+
+    document.getElementById("lang").addEventListener("click", toggleLanguage);
+  </script>
 </body>
 </html>
