@@ -115,11 +115,11 @@
 }
 </style>
 <meta content="2025暑期学校官网，包含课程介绍、讲者信息、日程安排、报名方式等。" name="description"/>
-<meta content="暑期学校, 图论, 组合数学, Summer School, Graph Theory, Combinatorics, 2025" name="keywords"/>
+<meta content="暑期学校, 图论, 组合数学" name="keywords"/>
 </head>
 <body style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/06/Strongly_regular_graph4c.png'); background-size: cover; background-attachment: fixed; font-family: 'Noto Sans SC', sans-serif;">
 <header>
-<div class="lang-toggle" id="lang">🌐 English</div><h1 id="title">暑期学校 Summer School</h1>
+<h1 id="title">暑期学校</h1>
 </header> <section id="intro">
 <h2 id="welcome-title">欢迎</h2>
 <p id="welcome-text">2025 年暑期学校将于 8 月 25 日至 30 日举行，涵盖图论、组合数学等多个方向。</p>
@@ -179,64 +179,6 @@
 <p><strong>协办单位：</strong>Example Research Center</p>
 <p><strong>联系人：</strong>example@example.edu</p>
 </section>
-<script>
-let language = "zh";
-document.getElementById("lang").addEventListener("click", toggleLanguage);
-function toggleLanguage() {
-  language = (language === "zh") ? "en" : "zh";
-  const text = {
-    zh: {
-      title: "暑期学校 Summer School",
-      courseTitle: "主讲课程",
-      courseList: ["课程 A", "课程 B"],
-      scheduleTitle: "日程安排（2025 年 8 月 25 日至 30 日）",
-      th: ["日期", "星期", "安排"],
-      register: ["报名方式", "请通过以下链接进行报名：", "点击报名"],
-      footer: ["主办单位：", "协办单位：", "联系人："],
-      lang: "🌐 English"
-    },
-    en: {
-      title: "Summer School",
-      courseTitle: "Courses",
-      courseList: ["Course A", "Course B"],
-      scheduleTitle: "Schedule (Aug 25–30, 2025)",
-      th: ["Date", "Day", "Event"],
-      register: ["Registration", "Please register using the link below:", "Register Now"],
-      footer: ["Organizer:", "Co-organizer:", "Contact:"],
-      lang: "🌐 中文"
-    }
-  };
-  const L = text[language];
-  document.getElementById("title").textContent = L.title;
-  document.getElementById("lang").textContent = L.lang;
-  document.getElementById("course-title").textContent = L.courseTitle;
-  const cl = document.getElementById("course-list");
-  cl.innerHTML = "";
-  L.courseList.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    cl.appendChild(li);
-  });
-  document.getElementById("schedule-title").textContent = L.scheduleTitle;
-  document.getElementById("th-date").textContent = L.th[0];
-  document.getElementById("th-weekday").textContent = L.th[1];
-  document.getElementById("th-content").textContent = L.th[2];
-  document.getElementById("register-title").textContent = L.register[0];
-  document.getElementById("register-text").textContent = L.register[1];
-  document.getElementById("register-button").textContent = L.register[2];
-  document.getElementById("organizer").textContent = L.footer[0];
-  document.getElementById("coorganizer").textContent = L.footer[1];
-  document.getElementById("contact").textContent = L.footer[2];
-}
 
-
-window.addEventListener("DOMContentLoaded", () => {
-  const userLang = navigator.language || navigator.userLanguage;
-  if (userLang.startsWith("en")) {
-    language = "zh";  // force toggle to switch to English
-    toggleLanguage();
-  }
-});
-</script>
 </body>
 </html>
